@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		50472F9B1AE79E4300B18C1E /* AeroDocAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50472F9A1AE79E4300B18C1E /* AeroDocAPIClient.swift */; };
 		5087E61F1AF0C6A8003B54BF /* AGLead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087E61E1AF0C6A8003B54BF /* AGLead.swift */; };
+		5087E6211AF249DF003B54BF /* AGStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087E6201AF249DF003B54BF /* AGStatus.swift */; };
 		508DF5F01AE6E30E00571BB6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DF5EF1AE6E30E00571BB6 /* AppDelegate.swift */; };
 		508DF5F51AE6E30E00571BB6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 508DF5F31AE6E30E00571BB6 /* Main.storyboard */; };
 		508DF5F71AE6E30E00571BB6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 508DF5F61AE6E30E00571BB6 /* Images.xcassets */; };
@@ -32,6 +33,7 @@
 		1079ED36CF472EFDB810A9A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		50472F9A1AE79E4300B18C1E /* AeroDocAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AeroDocAPIClient.swift; sourceTree = "<group>"; };
 		5087E61E1AF0C6A8003B54BF /* AGLead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGLead.swift; sourceTree = "<group>"; };
+		5087E6201AF249DF003B54BF /* AGStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGStatus.swift; sourceTree = "<group>"; };
 		508DF5EA1AE6E30E00571BB6 /* MyAeroDoc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAeroDoc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		508DF5EE1AE6E30E00571BB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		508DF5EF1AE6E30E00571BB6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,9 @@
 		5087E61D1AF0C600003B54BF /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				50D02B511AE847DC0057693E /* LoginViewController.swift */,
+				50472F9A1AE79E4300B18C1E /* AeroDocAPIClient.swift */,
+				5087E6201AF249DF003B54BF /* AGStatus.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -129,8 +134,6 @@
 				508DF5F61AE6E30E00571BB6 /* Images.xcassets */,
 				508DF5F81AE6E30E00571BB6 /* LaunchScreen.xib */,
 				508DF5ED1AE6E30E00571BB6 /* Supporting Files */,
-				50472F9A1AE79E4300B18C1E /* AeroDocAPIClient.swift */,
-				50D02B511AE847DC0057693E /* LoginViewController.swift */,
 			);
 			path = MyAeroDoc;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				5087E61F1AF0C6A8003B54BF /* AGLead.swift in Sources */,
 				50472F9B1AE79E4300B18C1E /* AeroDocAPIClient.swift in Sources */,
 				508DF5F01AE6E30E00571BB6 /* AppDelegate.swift in Sources */,
+				5087E6211AF249DF003B54BF /* AGStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
