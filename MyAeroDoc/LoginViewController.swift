@@ -31,6 +31,8 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         var apiClient = AeroDocAPIClient()
         apiClient.loginWithUsername(usernameField.text, password: passwordField.text, succes: { () -> () in
             println("Ok")
+            self.performSegueWithIdentifier("toTab", sender: self)
+            
         }) { (error) -> () in
             println("An error has occured during login! \n \(error)")
         }

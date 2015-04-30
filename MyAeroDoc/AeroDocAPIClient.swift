@@ -8,11 +8,11 @@
 
 import Foundation
 class AeroDocAPIClient: NSObject {
-    var userId:NSNumber = 0
+    var userId:NSNumber?
     var loginName:String = ""
     var status:String = ""
-    var latitude:String = ""
-    var longitude: String = ""
+    var latitude:String?
+    var longitude: String?
     var leadsPipe: AGPipe?
     var agentPipe: AGPipe?
     var localStore: AGStore?
@@ -43,12 +43,12 @@ class AeroDocAPIClient: NSObject {
        authMod.login(credentials, success: { (object1) -> Void in
         println("succes!")
         var object = object1 as NSDictionary
-        //self.userId = object["id"] as NSNumber
+        self.userId = object["id"] as? NSNumber
         // some Nulls in Object
         self.loginName = object["loginName"] as String
         self.status = object["status"] as String
-        self.latitude = object["latitude"] as String
-        self.longitude = object["longitude"] as String
+        self.latitude = object["latitude"] as? String
+        self.longitude = object["longitude"] as? String
         
         self.leadsPipe = pipeline.pipe({ (config) -> Void in
             config.name = "leads"
@@ -104,7 +104,7 @@ class AeroDocAPIClient: NSObject {
     }
     
     func changeStatus(status: String,succes:()->(),failure:(error: NSError)->())-> (){
-        self.changeAgent(status, latitude: latitude, longitude: longitude, success: succes, failure: failure)
+        self.changeAgent(status, latitude: latitude!, longitude: longitude!, success: succes, failure: failure)
     }
     func changeLocation(latitude: String,longitude: String,succes:()->(),failure:(error: NSError)->())->(){
         self.changeAgent(status, latitude: latitude, longitude: longitude, success: succes, failure: failure)
@@ -112,7 +112,7 @@ class AeroDocAPIClient: NSObject {
     
     
     func changeAgent(status: String,latitude: String,longitude: String,success:()->(),failure:(error: NSError)->())->(){
-        var params = ["id":self.userId,"loginName":self.loginName,"status":status,"latitude":latitude,"longitude":longitude]
+        var params = ["id":self.userId!,"loginName":self.loginName,"status":status,"latitude":latitude,"longitude":longitude] //check unwrapping
         agentPipe?.save(params, success: { (responseObject) -> Void in
             self.status = status
             self.longitude = longitude
