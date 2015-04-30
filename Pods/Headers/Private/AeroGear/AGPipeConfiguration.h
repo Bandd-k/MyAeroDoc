@@ -1,0 +1,1 @@
+../../../AeroGear/AeroGear-iOS/pipeline/AGPipeConfiguration.h

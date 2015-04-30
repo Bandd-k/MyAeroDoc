@@ -1,0 +1,1 @@
+../../../AeroGear/AeroGear-iOS/datamanager/AGSQLiteCommand.h
