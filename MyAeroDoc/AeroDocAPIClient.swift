@@ -80,6 +80,11 @@ class AeroDocAPIClient: NSObject {
     func fetchLeads(success:(leads : NSMutableArray)->(),failure:(error: NSError)->() )->(){
         self.leadsPipe?.read({ (responseObject) -> Void in
             //add
+            var leads = [AGLead]()
+            for leadDict in (responseObject as NSArray){ // May be a problem !!)
+                leads.append(AGLead(dictionary: leadDict as NSDictionary))
+            }
+            
         }, failure: { (error) -> Void in
             failure(error: error)
         })
@@ -96,6 +101,26 @@ class AeroDocAPIClient: NSObject {
         failure(error: error);
      })
         
+    }
+    
+    func changeStatus(status: String,succes:()->(),failure:(error: NSError)->())-> (){
+        self.changeAgent(status, latitude: latitude, longitude: longitude, success: succes, failure: failure)
+    }
+    func changeLocation(latitude: String,longitude: String,succes:()->(),failure:(error: NSError)->())->(){
+        self.changeAgent(status, latitude: latitude, longitude: longitude, success: succes, failure: failure)
+    }
+    
+    
+    func changeAgent(status: String,latitude: String,longitude: String,success:()->(),failure:(error: NSError)->())->(){
+        var params = ["id":self.userId,"loginName":self.loginName,"status":status,"latitude":latitude,"longitude":longitude]
+        agentPipe?.save(params, success: { (responseObject) -> Void in
+            self.status = status
+            self.longitude = longitude
+            self.latitude = latitude
+            success()
+        }, failure: { (error) -> Void in
+            failure(error: error)
+        })
     }
     
     
