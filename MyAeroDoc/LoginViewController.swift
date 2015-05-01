@@ -8,6 +8,7 @@
 
 import UIKit
 
+import CoreLocation
 class LoginViewController: UIViewController,UITextFieldDelegate {
 
     var deviceToken: NSData?
@@ -65,6 +66,18 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
         })
         
     #endif
+    }
+    
+    func locationManager(manager:CLLocationManager,locations: NSArray) ->() {
+        var location = locations.lastObject as CLLocation //may cause a problem!)
+        var apiClient = AeroDocAPIClient.sharedInstance()
+        var latitude = "\(location.coordinate.latitude)"
+        var longitude = "\(location.coordinate.longitude)"
+        apiClient.changeLocation(latitude, longitude: longitude, succes: { () -> () in
+            println("Sucessussfully updated position")
+        }) { (error) -> () in
+            println("An error has occured during login! \(error)")
+        }
     }
     /*
     // MARK: - Navigation

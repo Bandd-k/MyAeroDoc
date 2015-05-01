@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50461E091AF414AA0061E5D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50461E081AF414AA0061E5D6 /* CoreLocation.framework */; };
 		50472F9B1AE79E4300B18C1E /* AeroDocAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50472F9A1AE79E4300B18C1E /* AeroDocAPIClient.swift */; };
 		5087E61F1AF0C6A8003B54BF /* AGLead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087E61E1AF0C6A8003B54BF /* AGLead.swift */; };
 		5087E6211AF249DF003B54BF /* AGStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087E6201AF249DF003B54BF /* AGStatus.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		1079ED36CF472EFDB810A9A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		50461E081AF414AA0061E5D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		50472F9A1AE79E4300B18C1E /* AeroDocAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AeroDocAPIClient.swift; sourceTree = "<group>"; };
 		5087E61E1AF0C6A8003B54BF /* AGLead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGLead.swift; sourceTree = "<group>"; };
 		5087E6201AF249DF003B54BF /* AGStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGStatus.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50461E091AF414AA0061E5D6 /* CoreLocation.framework in Frameworks */,
 				826BE02FCC24030D40B5E457 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +80,7 @@
 		2BBCAB8229878DD7C6B5C83C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				50461E081AF414AA0061E5D6 /* CoreLocation.framework */,
 				EBC0D6E9B773D6FEF0664F63 /* libPods.a */,
 			);
 			name = Frameworks;
