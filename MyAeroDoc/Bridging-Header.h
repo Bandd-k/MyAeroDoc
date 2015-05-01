@@ -19,4 +19,5 @@
 #import "AGPipe.h"
 #import "AeroGearPush.h"
 #import "AeroGear.h"
+#import "AGDeviceRegistration.h"
 #endif

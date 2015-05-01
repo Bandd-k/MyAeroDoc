@@ -10,6 +10,7 @@ import UIKit
 
 class LoginViewController: UIViewController,UITextFieldDelegate {
 
+    var deviceToken: NSData?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.usernameField.delegate = self
@@ -41,6 +42,29 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField!) -> Bool {
         self.view.endEditing(true);
         return false;
+    }
+    
+    func deviceRegistration() ->(){
+    #if !TARGET_IPHONE_SIMULATOR
+       var registration = AGDeviceRegistration(serverURL: NSURL(string: URL_UNIFIED_PUSH))
+        registration.registerWithClientInfo({ (clientInfo) -> Void in
+            clientInfo.variantID = VARIANT_ID
+            clientInfo.variantSecret = VARIANT_SECRET
+            clientInfo.deviceToken = self.deviceToken
+            clientInfo.categories = ["lead"]
+            var currentDevice = UIDevice.currentDevice()
+            clientInfo.alias = AeroDocAPIClient.sharedInstance().loginName
+            clientInfo.operatingSystem = currentDevice.systemName
+            clientInfo.osVersion = currentDevice.systemVersion
+            clientInfo.deviceType = currentDevice.model
+            
+        }, success: { () -> Void in
+            println("UnifiedPush registration successful")
+        }, failure: { (error) -> Void in
+            println("UnifiedPush registration Error: \(error)")
+        })
+        
+    #endif
     }
     /*
     // MARK: - Navigation
