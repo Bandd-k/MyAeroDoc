@@ -12,6 +12,7 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        //need to add check
         var tabBarItem1 = tabBar.items?[0] as UITabBarItem
         var tabBarItem2 = tabBar.items?[1] as UITabBarItem
         tabBarItem1.image = UIImage(named: "list.png")!
