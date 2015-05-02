@@ -77,13 +77,14 @@ class AeroDocAPIClient: NSObject {
         }
     }
     //fetchLeads
-    func fetchLeads(success:(leads : NSMutableArray)->(),failure:(error: NSError)->() )->(){
+    func fetchLeads(success:(leads : [AGLead])->(),failure:(error: NSError)->() )->(){
         self.leadsPipe?.read({ (responseObject) -> Void in
             //add
             var leads = [AGLead]()
             for leadDict in (responseObject as NSArray){ // May be a problem !!)
                 leads.append(AGLead(dictionary: leadDict as NSDictionary))
             }
+            success(leads: leads)
             
         }, failure: { (error) -> Void in
             failure(error: error)

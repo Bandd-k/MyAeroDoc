@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		50461E091AF414AA0061E5D6 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50461E081AF414AA0061E5D6 /* CoreLocation.framework */; };
+		50461E0B1AF4C4650061E5D6 /* LeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50461E0A1AF4C4650061E5D6 /* LeadCell.swift */; };
 		50472F9B1AE79E4300B18C1E /* AeroDocAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50472F9A1AE79E4300B18C1E /* AeroDocAPIClient.swift */; };
 		5087E61F1AF0C6A8003B54BF /* AGLead.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087E61E1AF0C6A8003B54BF /* AGLead.swift */; };
 		5087E6211AF249DF003B54BF /* AGStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5087E6201AF249DF003B54BF /* AGStatus.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		1079ED36CF472EFDB810A9A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		50461E081AF414AA0061E5D6 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		50461E0A1AF4C4650061E5D6 /* LeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeadCell.swift; sourceTree = "<group>"; };
 		50472F9A1AE79E4300B18C1E /* AeroDocAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AeroDocAPIClient.swift; sourceTree = "<group>"; };
 		5087E61E1AF0C6A8003B54BF /* AGLead.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGLead.swift; sourceTree = "<group>"; };
 		5087E6201AF249DF003B54BF /* AGStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGStatus.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				508DF5F61AE6E30E00571BB6 /* Images.xcassets */,
 				508DF5F81AE6E30E00571BB6 /* LaunchScreen.xib */,
 				508DF5ED1AE6E30E00571BB6 /* Supporting Files */,
+				50461E0A1AF4C4650061E5D6 /* LeadCell.swift */,
 			);
 			path = MyAeroDoc;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				5087E61F1AF0C6A8003B54BF /* AGLead.swift in Sources */,
 				50472F9B1AE79E4300B18C1E /* AeroDocAPIClient.swift in Sources */,
 				5087E6231AF2683A003B54BF /* TabBarController.swift in Sources */,
+				50461E0B1AF4C4650061E5D6 /* LeadCell.swift in Sources */,
 				508DF5F01AE6E30E00571BB6 /* AppDelegate.swift in Sources */,
 				5087E6211AF249DF003B54BF /* AGStatus.swift in Sources */,
 				5087E62B1AF27806003B54BF /* AGLeadsTableViewController.swift in Sources */,

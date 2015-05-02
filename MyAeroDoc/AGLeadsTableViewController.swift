@@ -9,16 +9,17 @@
 import UIKit
 
 class AGLeadsTableViewController: UITableViewController {
-
+    var Allleads = [AGLead]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.displayLeads()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -30,24 +31,37 @@ class AGLeadsTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Potentially incomplete method implementation.
         // Return the number of sections.
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        return 0
+        return Allleads.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as LeadCell
+        cell.topLabel.text = Allleads[indexPath.row].name
+        cell.bottomLabel.text = Allleads[indexPath.row].location
+        
         // Configure the cell...
 
         return cell
     }
-    */
+    //get all leads from server
+    func displayLeads()->(){
+        AeroDocAPIClient.sharedInstance().fetchLeads({ (leads) -> () in
+            self.Allleads = leads// check for problem
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.tableView.reloadData()
+            })
+        }, failure: { (error) -> () in
+            println(error) // add UIALET instead log
+        })
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

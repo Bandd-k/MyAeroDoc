@@ -9,8 +9,8 @@
 import UIKit
 
 import CoreLocation
-class LoginViewController: UIViewController,UITextFieldDelegate {
-
+class LoginViewController: UIViewController,UITextFieldDelegate,CLLocationManagerDelegate {
+    var locationManger: CLLocationManager?
     var deviceToken: NSData?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +28,29 @@ class LoginViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var passwordField: UITextField!
 
+    //--------------------------------------------------------------------
+    // Login button action. Once successfully logged we register device
+    // for push notification
+    //--------------------------------------------------------------------
     @IBAction func PushLogin(sender: AnyObject) {
         println("start Logging")
-        var apiClient = AeroDocAPIClient()
+        var apiClient = AeroDocAPIClient.sharedInstance()
+        // first, we need to login to the service
         apiClient.loginWithUsername(usernameField.text, password: passwordField.text, succes: { () -> () in
             println("Ok")
+            // a successful login means we can trigger the device registration
+            // against the AeroGear UnifiedPush Server:
+            //self.deviceRegistration()
+            self.locationManger = CLLocationManager()
+            self.locationManger?.delegate = self
+            self.locationManger?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            // needed for iOS8, check to support iOS7
+            if((self.locationManger?.respondsToSelector("requestWhenInUseAuthorization")) != nil){// may be problem!!
+                self.locationManger?.requestWhenInUseAuthorization()
+            }
+            self.locationManger?.startMonitoringSignificantLocationChanges()
+            //now we can go to the next controller!
             self.performSegueWithIdentifier("toTab", sender: self)
-            
         }) { (error) -> () in
             println("An error has occured during login! \n \(error)")
         }
