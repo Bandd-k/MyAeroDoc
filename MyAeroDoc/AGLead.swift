@@ -14,7 +14,7 @@ class AGLead: NSObject,NSCopying  {
     var name : String = ""
     var location : String = ""
     var phoneNumber: String = ""
-    var saleAgent: NSNumber?
+    var saleAgent: String?
     
     init(dictionary: NSDictionary) {
         super.init()
@@ -22,11 +22,11 @@ class AGLead: NSObject,NSCopying  {
         self.name = dictionary.objectForKey("name") as String
         self.location = dictionary.objectForKey("location") as String
         self.phoneNumber = dictionary.objectForKey("phoneNumber") as String
-        self.saleAgent = dictionary.objectForKey("saleAgent") as? NSNumber
+        self.saleAgent = dictionary.objectForKey("saleAgent") as? String
 }
     func dictionary() ->(NSDictionary){
         if(recId != nil && saleAgent != nil){
-        return ["id" : self.recId!.stringValue,"name":self.name,"location":self.location,"phoneNumber":self.phoneNumber,"saleAgent": self.saleAgent!.stringValue]// maybe need add check for null
+        return ["id" : self.recId!.stringValue,"name":self.name,"location":self.location,"phoneNumber":self.phoneNumber,"saleAgent": self.saleAgent!]// maybe need add check for null
         
         }
         return ["name":self.name,"location":self.location,"phoneNumber":self.phoneNumber]

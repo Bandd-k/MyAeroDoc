@@ -15,15 +15,24 @@ class OneLeadViewController: UIViewController {
     @IBOutlet weak var phoneNumber: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // fill data on screen
+        name.text = lead?.name
+        location.text = lead?.location
+        phoneNumber.text = lead?.phoneNumber
+        
+        
         // Do any additional setup after loading the view.
     }
     @IBAction func accept(sender: AnyObject) {
+        self.lead?.saleAgent = AeroDocAPIClient.sharedInstance().userId
         AeroDocAPIClient.sharedInstance().postLead(self.lead!, success: { () -> () in
-            var error : NSErrorPointer = nil
-            if((AeroDocAPIClient.sharedInstance().localStore?.save(self.lead?.dictionary(), error: error)) != nil){
+            var error : NSError?
+            var test = AeroDocAPIClient.sharedInstance().localStore?
+            
+            if((AeroDocAPIClient.sharedInstance().localStore?.save(self.lead?.dictionary(), error: &error)) != nil){
                 println("error occured durning save")
             }
+            self.goBackToList()
         }) { (error) -> () in
             println("ops!")
         }
@@ -31,6 +40,8 @@ class OneLeadViewController: UIViewController {
         
     }
 
+    @IBAction func dismiss(sender: AnyObject) {
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

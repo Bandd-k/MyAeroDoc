@@ -84,7 +84,7 @@
                                 <connections>
                                     <outlet property="bottomLabel" destination="2fT-2Z-JDT" id="e8N-Fo-i9B"/>
                                     <outlet property="topLabel" destination="r3I-aO-TGI" id="TxM-vt-6t9"/>
-                                    <segue destination="MAa-UK-YDn" kind="push" id="hh8-JB-Mpn"/>
+                                    <segue destination="MAa-UK-YDn" kind="push" identifier="TableSegue" id="hh8-JB-Mpn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -117,6 +117,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giS-w0-Tsh">
+                                <rect key="frame" x="56" y="169" width="209" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTt-Qj-rlO">
                                 <rect key="frame" x="56" y="232" width="209" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -137,19 +143,15 @@
                                 <state key="normal" title="Dismiss">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismiss:" destination="MAa-UK-YDn" eventType="touchUpInside" id="Bum-PP-Awt"/>
+                                </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="giS-w0-Tsh">
-                                <rect key="frame" x="56" y="169" width="209" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="My0-NU-ROH"/>
                     <connections>
-                        <outlet property="dismiss" destination="aGN-zS-8pa" id="NJd-Mh-RZm"/>
                         <outlet property="location" destination="giS-w0-Tsh" id="XHE-YS-Eeh"/>
                         <outlet property="name" destination="rn7-rH-7MS" id="x5h-pd-SFu"/>
                         <outlet property="phoneNumber" destination="WTt-Qj-rlO" id="2il-UL-Vbc"/>

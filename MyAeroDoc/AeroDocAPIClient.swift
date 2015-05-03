@@ -8,7 +8,7 @@
 
 import Foundation
 class AeroDocAPIClient: NSObject {
-    var userId:NSNumber?
+    var userId:String = ""
     var loginName:String = ""
     var status:String = ""
     var latitude:String?
@@ -43,7 +43,7 @@ class AeroDocAPIClient: NSObject {
        authMod.login(credentials, success: { (object1) -> Void in
         println("succes!")
         var object = object1 as NSDictionary
-        self.userId = object["id"] as? NSNumber
+        self.userId = object["id"] as String
         // some Nulls in Object
         self.loginName = object["loginName"] as String
         self.status = object["status"] as String
@@ -113,7 +113,7 @@ class AeroDocAPIClient: NSObject {
     
     
     func changeAgent(status: String,latitude: String,longitude: String,success:()->(),failure:(error: NSError)->())->(){
-        var params = ["id":self.userId!,"loginName":self.loginName,"status":status,"latitude":latitude,"longitude":longitude] //check unwrapping
+        var params = ["id":self.userId,"loginName":self.loginName,"status":status,"latitude":latitude,"longitude":longitude] //check unwrapping
         agentPipe?.save(params, success: { (responseObject) -> Void in
             self.status = status
             self.longitude = longitude

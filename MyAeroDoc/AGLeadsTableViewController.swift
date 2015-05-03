@@ -62,6 +62,15 @@ class AGLeadsTableViewController: UITableViewController {
         })
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "TableSegue" {
+            if let indexPath = self.tableView.indexPathForSelectedRow() {
+                let destinationController = segue.destinationViewController as OneLeadViewController
+                destinationController.lead = Allleads[indexPath.row]
+            }
+        }
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
