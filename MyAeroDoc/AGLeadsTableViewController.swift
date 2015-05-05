@@ -13,6 +13,9 @@ class AGLeadsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.displayLeads()
+        var refreshButton = UIBarButtonItem(image: UIImage(named: "refresh15.png"), style: UIBarButtonItemStyle.Plain, target: self, action: "displayLeads")
+        self.navigationItem.setRightBarButtonItem(refreshButton, animated: true)
+//        self.navigationController?.navigationItem.setRightBarButtonItem(refreshButton, animated: true)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

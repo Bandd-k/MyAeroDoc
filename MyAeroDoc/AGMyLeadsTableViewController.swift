@@ -13,13 +13,14 @@ class AGMyLeadsTableViewController: UITableViewController {
     var localStore: AGStore = AeroDocAPIClient.sharedInstance().localStore!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.contentInset = UIEdgeInsetsMake(64,0,0,0)// 44 + 20
+        self.tableView.rowHeight = 60
         self.displayLeads()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        self.displayLeads()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,15 +50,18 @@ class AGMyLeadsTableViewController: UITableViewController {
         self.tableView.reloadData()
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath) as UITableViewCell
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as LeadCell
+        //var test = (MyLeads[indexPath.row] as NSDictionary)
+        //var bg = test["location"]
+        cell.topLabel.text = (MyLeads[indexPath.row] as NSDictionary)["name"] as String
+        cell.bottomLabel.text = (MyLeads[indexPath.row] as NSDictionary)["location"] as String        // Configure the cell...
+        //cell.topLabel.text = "br"
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.

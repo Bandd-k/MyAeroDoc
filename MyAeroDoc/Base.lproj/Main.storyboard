@@ -181,7 +181,9 @@
         <scene sceneID="frH-lz-Mvh">
             <objects>
                 <tabBarController id="FWu-PQ-tP2" customClass="TabBarController" customModule="MyAeroDoc" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="YvK-O1-EIE"/>
+                    <navigationItem key="navigationItem" id="YvK-O1-EIE">
+                        <barButtonItem key="rightBarButtonItem" title="Item" id="4fG-zx-Y8c"/>
+                    </navigationItem>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="3cs-XU-vdS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>

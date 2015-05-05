@@ -16,7 +16,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,CLLocationManage
         super.viewDidLoad()
         self.usernameField.delegate = self
         self.passwordField.delegate = self
-
+        self.deviceToken = AeroDocAPIClient.sharedInstance().deviceToken
         // Do any additional setup after loading the view.
     }
 

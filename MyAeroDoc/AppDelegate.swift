@@ -16,6 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        if(application.respondsToSelector("registerUserNotificationSettings")){// registerUserNotificationSettings: maybe
+            var category = self.registerActions()
+            var categories = NSMutableSet()
+            categories.addObject(category)
+            var notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, categories:categories)
+            UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
+            UIApplication.sharedApplication().registerForRemoteNotifications()
+            
+        }
+        else{
+            let types:UIRemoteNotificationType = (.Alert | .Badge | .Sound)
+            UIApplication.sharedApplication().registerForRemoteNotificationTypes(types)
+            
+        }
         return true
     }
 
@@ -23,7 +37,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        AeroDocAPIClient.sharedInstance().deviceToken = deviceToken
+    }
+    func registerActions() ->(UIMutableUserNotificationCategory) {
+        var acceptLeadAction = UIMutableUserNotificationAction()
+        acceptLeadAction.identifier = "Accept"
+        acceptLeadAction.title = "Accept"
+        acceptLeadAction.activationMode = UIUserNotificationActivationMode.Foreground
+        acceptLeadAction.destructive = false
+        acceptLeadAction.authenticationRequired = false
+        
+        var category = UIMutableUserNotificationCategory()
+        category.identifier = "acceptLead"
+        category.setActions([acceptLeadAction], forContext: UIUserNotificationActionContext.Default)
+        return category
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        var recId: AnyObject? = userInfo["id"];
+        var name: AnyObject? = userInfo["name"];
+        var phone: AnyObject? = userInfo["phone"];
+        var location: AnyObject? = userInfo["location"];
+        var messageType: AnyObject? = userInfo["messageType"];
+        if ((messageType?.isEqual("accepted_lead")) != false){
+            var nortification = NSNotification(name: "LeadAcceptedNotification", object: userInfo)
+            NSNotificationCenter.defaultCenter().postNotification(nortification)
+            
+        }
+        else{
+            var alert = UIAlertView(title: "", message: "Lead \(name) is available", delegate: nil, cancelButtonTitle: "Ok")
+            alert.show()
+            var nortification = NSNotification(name: "LeadAddedNotification", object: userInfo)
+            NSNotificationCenter.defaultCenter().postNotification(nortification)
+            
+        }
 
+    }
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+    if(identifier == "accept"){
+    var nortification = NSNotification(name: "AcceptNotification", object: userInfo)
+    NSNotificationCenter.defaultCenter().postNotification(nortification)
+    }
+    completionHandler()
+    }
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.

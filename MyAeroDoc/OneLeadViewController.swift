@@ -27,9 +27,7 @@ class OneLeadViewController: UIViewController {
         self.lead?.saleAgent = AeroDocAPIClient.sharedInstance().userId
         AeroDocAPIClient.sharedInstance().postLead(self.lead!, success: { () -> () in
             var error : NSError?
-            var test = AeroDocAPIClient.sharedInstance().localStore?
-            
-            if((AeroDocAPIClient.sharedInstance().localStore?.save(self.lead?.dictionary(), error: &error)) != nil){
+            if((AeroDocAPIClient.sharedInstance().localStore?.save(self.lead?.dictionary(), error: &error)) != true){
                 println("error occured durning save")
             }
             self.goBackToList()
@@ -41,6 +39,7 @@ class OneLeadViewController: UIViewController {
     }
 
     @IBAction func dismiss(sender: AnyObject) {
+        self.goBackToList()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -48,7 +47,7 @@ class OneLeadViewController: UIViewController {
     }
     
     func goBackToList() ->(){
-        self.lead?.saleAgent = AeroDocAPIClient.sharedInstance().userId
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
 

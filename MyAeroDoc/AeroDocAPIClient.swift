@@ -17,6 +17,7 @@ class AeroDocAPIClient: NSObject {
     var agentPipe: AGPipe?
     var localStore: AGStore?
     var pushedLocalStore: AGStore?
+    var deviceToken: NSData?
     
     class func sharedInstance() -> AeroDocAPIClient {
         return _sharedInstance
