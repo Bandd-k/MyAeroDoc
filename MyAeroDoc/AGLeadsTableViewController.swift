@@ -15,6 +15,9 @@ class AGLeadsTableViewController: UITableViewController {
         self.displayLeads()
         var refreshButton = UIBarButtonItem(image: UIImage(named: "refresh15.png"), style: UIBarButtonItemStyle.Plain, target: self, action: "displayLeads")
         self.navigationItem.setRightBarButtonItem(refreshButton, animated: true)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayLeads", name: "LeadAddedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayLeads", name: "LeadAcceptedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayLeads", name: "AcceptNotification", object: nil)
 //        self.navigationController?.navigationItem.setRightBarButtonItem(refreshButton, animated: true)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -45,7 +48,7 @@ class AGLeadsTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as LeadCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! LeadCell
         cell.topLabel.text = Allleads[indexPath.row].name
         cell.bottomLabel.text = Allleads[indexPath.row].location
         
@@ -68,7 +71,7 @@ class AGLeadsTableViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "TableSegue" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let destinationController = segue.destinationViewController as OneLeadViewController
+                let destinationController = segue.destinationViewController as! OneLeadViewController
                 destinationController.lead = Allleads[indexPath.row]
             }
         }

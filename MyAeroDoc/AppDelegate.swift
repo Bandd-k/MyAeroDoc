@@ -16,11 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        if(application.respondsToSelector("registerUserNotificationSettings")){// registerUserNotificationSettings: maybe
+        if(application.respondsToSelector("registerUserNotificationSettings:")){// registerUserNotificationSettings: maybe
             var category = self.registerActions()
             var categories = NSMutableSet()
             categories.addObject(category)
-            var notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, categories:categories)
+            var notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, categories:categories as Set<NSObject>)// may be problem
             UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
             UIApplication.sharedApplication().registerForRemoteNotifications()
             
@@ -38,7 +38,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        println(deviceToken)
         AeroDocAPIClient.sharedInstance().deviceToken = deviceToken
+        println(AeroDocAPIClient.sharedInstance().deviceToken)
+    }
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        println("failure((\(error)")
     }
     func registerActions() ->(UIMutableUserNotificationCategory) {
         var acceptLeadAction = UIMutableUserNotificationAction()
@@ -55,12 +60,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        var recId: AnyObject? = userInfo["id"];
-        var name: AnyObject? = userInfo["name"];
-        var phone: AnyObject? = userInfo["phone"];
-        var location: AnyObject? = userInfo["location"];
-        var messageType: AnyObject? = userInfo["messageType"];
-        if ((messageType?.isEqual("accepted_lead")) != false){
+        var recId: String? = userInfo["id"] as? String;
+        var name: String? = userInfo["name"] as? String;
+        var phone: String? = userInfo["phone"] as? String;
+        var location: String? = userInfo["location"] as? String;
+        var messageType: String = userInfo["messageType"] as! String;
+        if ((messageType.isEqual("accepted_lead")) != false){
             var nortification = NSNotification(name: "LeadAcceptedNotification", object: userInfo)
             NSNotificationCenter.defaultCenter().postNotification(nortification)
             

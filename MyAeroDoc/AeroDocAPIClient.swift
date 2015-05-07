@@ -43,11 +43,11 @@ class AeroDocAPIClient: NSObject {
         
        authMod.login(credentials, success: { (object1) -> Void in
         println("succes!")
-        var object = object1 as NSDictionary
-        self.userId = object["id"] as String
+        var object = object1 as! NSDictionary
+        self.userId = object["id"] as! String
         // some Nulls in Object
-        self.loginName = object["loginName"] as String
-        self.status = object["status"] as String
+        self.loginName = object["loginName"] as! String
+        self.status = object["status"] as! String
         self.latitude = object["latitude"] as? String
         self.longitude = object["longitude"] as? String
         
@@ -82,8 +82,8 @@ class AeroDocAPIClient: NSObject {
         self.leadsPipe?.read({ (responseObject) -> Void in
             //add
             var leads = [AGLead]()
-            for leadDict in (responseObject as NSArray){ // May be a problem !!)
-                leads.append(AGLead(dictionary: leadDict as NSDictionary))
+            for leadDict in (responseObject as! NSArray){ // May be a problem !!)
+                leads.append(AGLead(dictionary: leadDict as! NSDictionary))
             }
             success(leads: leads)
             
@@ -93,7 +93,7 @@ class AeroDocAPIClient: NSObject {
     }
     
     func postLead(lead :AGLead,success:()->(),failure:(error: NSError)->())->(){
-     leadsPipe?.save(lead.dictionary(), success: { (responseObject) -> Void in
+     leadsPipe?.save(lead.dictionary() as [NSObject : AnyObject], success: { (responseObject) -> Void in
         if (lead.recId == nil) { // if it is a new lead, set the id
             lead.recId = responseObject.objectForKey("id") as? NSNumber
         }

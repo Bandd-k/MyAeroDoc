@@ -233,6 +233,7 @@
 				TargetAttributes = {
 					508DF5E91AE6E30E00571BB6 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = X96WC7QB45;
 					};
 					508DF5FE1AE6E30E00571BB6 = {
 						CreatedOnToolsVersion = 6.2;
@@ -450,9 +451,12 @@
 			baseConfigurationReference = D6A0C26E3DC076B279F3315A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MyAeroDoc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyAeroDoc/Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};
@@ -463,9 +467,12 @@
 			baseConfigurationReference = 1079ED36CF472EFDB810A9A2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = MyAeroDoc/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "MyAeroDoc/Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "Pods/**";
 			};

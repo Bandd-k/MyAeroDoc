@@ -19,9 +19,9 @@ class AGLead: NSObject,NSCopying  {
     init(dictionary: NSDictionary) {
         super.init()
         self.recId = dictionary.objectForKey("id")?.integerValue
-        self.name = dictionary.objectForKey("name") as String
-        self.location = dictionary.objectForKey("location") as String
-        self.phoneNumber = dictionary.objectForKey("phoneNumber") as String
+        self.name = dictionary.objectForKey("name") as! String
+        self.location = dictionary.objectForKey("location") as! String
+        self.phoneNumber = dictionary.objectForKey("phoneNumber") as! String
         self.saleAgent = dictionary.objectForKey("saleAgent") as? String
 }
     func dictionary() ->(NSDictionary){
@@ -53,11 +53,11 @@ class AGLead: NSObject,NSCopying  {
         if(!(object is AGLead)){
             return false
         }
-        var otherLead = object as AGLead
+        var otherLead = object as! AGLead
         return (self.recId!.isEqualToNumber(otherLead.recId!))// need check nil before unwrapping!
     }
     
-    func description() -> NSString{
+    func descript() -> NSString{
         return "\(object_getClass(self)) [id=\(self.recId), name=\(self.name), location=\(self.location), phoneNumber=\(self.phoneNumber), saleAgent=\(self.saleAgent)]"
     }
     

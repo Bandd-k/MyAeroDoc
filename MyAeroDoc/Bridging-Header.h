@@ -12,8 +12,8 @@
 //configs !
 #define URL_AERODOC @"http://192.168.1.43:8080/aerodoc/"
 #define URL_UNIFIED_PUSH @"https://push-deniskaprenko.rhcloud.com/ag-push/"
-#define VARIANT_ID @"76a2fc33-efbb-4e71-9271-231fb85981c4"
-#define VARIANT_SECRET @"fc64a8e5-32c2-42e8-9778-125062cbc835"
+#define VARIANT_ID @"73534f67-790c-4d93-860f-ee3d403562d6"
+#define VARIANT_SECRET @"b286c8a5-f7e6-4119-b7b8-171b8b15bfb1"
 #define ENDPOINT @"rest"
 
 //Imports

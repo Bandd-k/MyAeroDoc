@@ -42,7 +42,7 @@ class AGMyLeadsTableViewController: UITableViewController {
         return MyLeads.count
     }
     func displayLeads()->(){
-        self.MyLeads = (localStore.readAll() as NSArray).mutableCopy() as NSMutableArray // difficult place
+        self.MyLeads = (localStore.readAll() as NSArray).mutableCopy() as! NSMutableArray // difficult place
         
     }
     func myLeadRefresh() -> (){
@@ -52,11 +52,11 @@ class AGMyLeadsTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as LeadCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! LeadCell
         //var test = (MyLeads[indexPath.row] as NSDictionary)
         //var bg = test["location"]
-        cell.topLabel.text = (MyLeads[indexPath.row] as NSDictionary)["name"] as String
-        cell.bottomLabel.text = (MyLeads[indexPath.row] as NSDictionary)["location"] as String        // Configure the cell...
+        cell.topLabel.text = (MyLeads[indexPath.row] as! NSDictionary)["name"] as! String
+        cell.bottomLabel.text = (MyLeads[indexPath.row] as! NSDictionary)["location"] as! String        // Configure the cell...
         //cell.topLabel.text = "br"
 
         return cell

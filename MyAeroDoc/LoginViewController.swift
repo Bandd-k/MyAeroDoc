@@ -16,7 +16,6 @@ class LoginViewController: UIViewController,UITextFieldDelegate,CLLocationManage
         super.viewDidLoad()
         self.usernameField.delegate = self
         self.passwordField.delegate = self
-        self.deviceToken = AeroDocAPIClient.sharedInstance().deviceToken
         // Do any additional setup after loading the view.
     }
 
@@ -34,13 +33,14 @@ class LoginViewController: UIViewController,UITextFieldDelegate,CLLocationManage
     //--------------------------------------------------------------------
     @IBAction func PushLogin(sender: AnyObject) {
         println("start Logging")
+        self.deviceToken = AeroDocAPIClient.sharedInstance().deviceToken
         var apiClient = AeroDocAPIClient.sharedInstance()
         // first, we need to login to the service
         apiClient.loginWithUsername(usernameField.text, password: passwordField.text, succes: { () -> () in
             println("Ok")
             // a successful login means we can trigger the device registration
             // against the AeroGear UnifiedPush Server:
-            //self.deviceRegistration()
+            self.deviceRegistration()
             self.locationManger = CLLocationManager()
             self.locationManger?.delegate = self
             self.locationManger?.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -67,7 +67,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,CLLocationManage
         registration.registerWithClientInfo({ (clientInfo) -> Void in
             clientInfo.variantID = VARIANT_ID
             clientInfo.variantSecret = VARIANT_SECRET
-            clientInfo.deviceToken = self.deviceToken
+            clientInfo.deviceToken = self.deviceToken!
             clientInfo.categories = ["lead"]
             var currentDevice = UIDevice.currentDevice()
             clientInfo.alias = AeroDocAPIClient.sharedInstance().loginName
@@ -85,7 +85,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,CLLocationManage
     }
     
     func locationManager(manager:CLLocationManager,locations: NSArray) ->() {
-        var location = locations.lastObject as CLLocation //may cause a problem!)
+        var location = locations.lastObject as! CLLocation //may cause a problem!)
         var apiClient = AeroDocAPIClient.sharedInstance()
         var latitude = "\(location.coordinate.latitude)"
         var longitude = "\(location.coordinate.longitude)"
