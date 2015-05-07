@@ -17,13 +17,15 @@ class TabBarController: UITabBarController {
         var tabBarItem2 = tabBar.items?[1] as! UITabBarItem
         tabBarItem1.image = UIImage(named: "list.png")!
         tabBarItem2.image = UIImage(named: "me.png")!
-        
         // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
     
 

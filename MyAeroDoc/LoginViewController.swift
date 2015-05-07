@@ -19,6 +19,7 @@ class LoginViewController: UIViewController,UITextFieldDelegate,CLLocationManage
         // Do any additional setup after loading the view.
     }
 
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -56,12 +57,12 @@ class LoginViewController: UIViewController,UITextFieldDelegate,CLLocationManage
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true);
         return false;
     }
     
-    func deviceRegistration() ->(){
+    func deviceRegistration() ->(){ // IT doesn't work in Simulator !!
     #if !TARGET_IPHONE_SIMULATOR
        var registration = AGDeviceRegistration(serverURL: NSURL(string: URL_UNIFIED_PUSH))
         registration.registerWithClientInfo({ (clientInfo) -> Void in

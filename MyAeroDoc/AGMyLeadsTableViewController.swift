@@ -13,14 +13,20 @@ class AGMyLeadsTableViewController: UITableViewController {
     var localStore: AGStore = AeroDocAPIClient.sharedInstance().localStore!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.contentInset = UIEdgeInsetsMake(64,0,0,0)// 44 + 20
+        //self.tableView.contentInset = UIEdgeInsetsMake(64,0,0,0)// 44 + 20
         self.tableView.rowHeight = 60
         self.displayLeads()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "myLeadRefresh", name: "LeadAddedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "myLeadRefresh", name: "LeadAcceptedNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "myLeadRefresh", name: "AcceptNotification", object: nil)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
     }
 
     override func didReceiveMemoryWarning() {

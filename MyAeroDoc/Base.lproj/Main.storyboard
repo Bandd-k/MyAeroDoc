@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
         <!--Login View Controller-->
@@ -20,20 +20,20 @@
                                 <rect key="frame" x="-60" y="0.0" width="440" height="320"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fl1-28-SoX">
-                                <rect key="frame" x="83" y="242" width="155" height="30"/>
+                                <rect key="frame" x="53" y="242" width="207" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yng-Oi-64M">
-                                <rect key="frame" x="83" y="296" width="155" height="30"/>
+                                <rect key="frame" x="53" y="296" width="207" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bU-Vu-tTS">
-                                <rect key="frame" x="125" y="334" width="71" height="48"/>
+                                <rect key="frame" x="121" y="350" width="71" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" title="Login">
-                                    <color key="titleColor" name="keyboardFocusIndicatorColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="titleColor" red="0.39215686274509803" green="0.5490196078431373" blue="0.63921568627450975" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -46,14 +46,32 @@
                     <connections>
                         <outlet property="passwordField" destination="Yng-Oi-64M" id="6jh-oA-fkI"/>
                         <outlet property="usernameField" destination="fl1-28-SoX" id="hgW-f3-TO4"/>
-                        <segue destination="dWw-fK-2si" kind="modal" identifier="toTab" id="FWH-4R-cFw"/>
+                        <segue destination="FWu-PQ-tP2" kind="modal" identifier="toTab" id="W0L-49-Tig"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-215" y="167"/>
+            <point key="canvasLocation" x="-313" y="167"/>
         </scene>
         <!--Item-->
+        <scene sceneID="Ivy-k4-KgN">
+            <objects>
+                <navigationController id="Xtp-d6-By2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ODg-qm-sMY"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Yms-Rf-gaN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yH0-HU-boc" kind="relationship" relationship="rootViewController" id="tUJ-TX-RqR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vse-z3-xTF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="423" y="-400"/>
+        </scene>
+        <!--Leads-->
         <scene sceneID="y44-E0-mHQ">
             <objects>
                 <tableViewController id="yH0-HU-boc" customClass="AGLeadsTableViewController" customModule="MyAeroDoc" customModuleProvider="target" sceneMemberID="viewController">
@@ -94,6 +112,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="bzl-cp-gEX"/>
+                    <navigationItem key="navigationItem" title="Leads" id="T18-0E-MJ3"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="onK-HD-0hn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -161,22 +180,6 @@
             </objects>
             <point key="canvasLocation" x="1291" y="-329"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="IcA-i0-0Wd">
-            <objects>
-                <navigationController id="dWw-fK-2si" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eaI-9w-2qE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="FWu-PQ-tP2" kind="relationship" relationship="rootViewController" id="SV8-dR-ZC9"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ojH-21-702" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="167" y="-205"/>
-        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="frH-lz-Mvh">
             <objects>
@@ -191,15 +194,33 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="yH0-HU-boc" kind="relationship" relationship="viewControllers" id="UwL-eg-KZI"/>
-                        <segue destination="yFM-8C-atm" kind="relationship" relationship="viewControllers" id="Ady-Cn-aV6"/>
+                        <segue destination="Xtp-d6-By2" kind="relationship" relationship="viewControllers" id="dRs-0z-0Wp"/>
+                        <segue destination="vDE-Iw-3OX" kind="relationship" relationship="viewControllers" id="znR-DS-61F"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Oq-vw-N6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="511" y="129"/>
+            <point key="canvasLocation" x="37" y="187"/>
         </scene>
         <!--Item-->
+        <scene sceneID="neq-Cp-PAJ">
+            <objects>
+                <navigationController id="vDE-Iw-3OX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="tL7-if-E57"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="cM2-ZJ-bS1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="yFM-8C-atm" kind="relationship" relationship="rootViewController" id="36Z-TC-6n1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cdp-7A-jzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="511" y="776"/>
+        </scene>
+        <!--MyLeads-->
         <scene sceneID="6hx-3P-C01">
             <objects>
                 <tableViewController id="yFM-8C-atm" customClass="AGMyLeadsTableViewController" customModule="MyAeroDoc" customModuleProvider="target" sceneMemberID="viewController">
@@ -239,6 +260,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="6id-u4-PO0"/>
+                    <navigationItem key="navigationItem" title="MyLeads" id="zxP-zp-Hih"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j87-dl-DIB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
